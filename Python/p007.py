@@ -22,6 +22,6 @@ def get_prime_number_by(*, position: int) -> int:
 
 
 if __name__ == '__main__':
-    n = 10 ** 4 + 1
+    n = 10**4 + 1
     answer = get_prime_number_by(position=n)
     print(answer)

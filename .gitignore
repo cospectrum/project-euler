@@ -1,3 +1,13 @@
-Python/__pycache__
 .idea
 
+*.swo
+*.swp
+*.out
+
+stuff
+
+
+Python/__pycache__
+Python/tests.py
+
+C

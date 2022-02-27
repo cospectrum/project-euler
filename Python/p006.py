@@ -29,7 +29,7 @@ def get_square_of_sum(n: int) -> int:
 
 def get_sum_of_squares(n: int) -> int:
     # 1^2 + 2^2 + ... + n^2
-    return n * (n + 1) * (2 * n + 1) // 6
+    return n*(n + 1)*(2*n + 1) // 6
 
 
 if __name__ == '__main__':

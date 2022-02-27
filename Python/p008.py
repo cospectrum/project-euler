@@ -29,7 +29,7 @@ from functools import reduce
 
 
 def get_product(iterator):
-    return reduce(lambda x, y: x * y, iterator, 1)
+    return reduce(lambda x, y: x*y, iterator, 1)
 
 
 def find_max_product(*, number, digits: int):
@@ -40,7 +40,7 @@ def find_max_product(*, number, digits: int):
     max_product = 0
     for num in numbers:
         for i in range(len(num) - digits + 1):
-            sliced_num = map(int, num[i:i + digits])
+            sliced_num = map(int, num[i:i+digits])
             product = get_product(sliced_num)
             max_product = max(product, max_product)
     return max_product
@@ -69,7 +69,8 @@ def main():
         '05886116467109405077541002256983155200055935729725'
         '71636269561882670428252483600823257530420752963450'
     )
-    answer = find_max_product(number=number, digits=13)
+    digits = 13
+    answer = find_max_product(number=number, digits=digits)
     print(answer)
 
 

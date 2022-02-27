@@ -1,5 +1,7 @@
 import time
 from math import sqrt, ceil, factorial
+from collections import deque
+from typing import Any, Sequence, List, Iterator, Union
 
 
 def benchmark(func):
@@ -17,6 +19,30 @@ def benchmark(func):
         return result
 
     return wrapper
+
+
+def factors_generator(number: int) -> Iterator[int]:
+    m = 1
+    while m*m < number:
+        if number % m == 0:
+            yield m
+            yield number // m
+        m += 1
+    if m*m == number:
+        yield m
+
+
+def is_palindrome(seq: Union[Sequence, int]) -> bool:
+    if isinstance(seq, int):
+        seq = str(seq)
+    length = len(seq)
+    half_len = length//2
+    for i in range(half_len):
+        if seq[i] != seq[length-1-i]:
+            break
+    else:
+        return True
+    return False
 
 
 def get_factorization_list(n: int) -> list:
@@ -63,3 +89,44 @@ def get_factorization_dict(n: int) -> dict:
 def binomial_coefficient(n: int, k: int) -> int:
     assert n >= 0 and n >= k
     return factorial(n) // (factorial(n - k) * factorial(k))
+
+
+def max_product(iterable_obj, *, queue_len: int) -> Any:
+    """Return greatest product of <queue_len> or less
+    adjacent values in <iterable_obj>
+    """
+    assert queue_len > 0
+    iterator = iter(iterable_obj)
+    queue = deque()
+    great_product = product = next(iterator)
+    for _ in range(queue_len-1):
+        num = next(iterator)
+        if num == 0:
+            queue = deque()
+            great_product = max(num, great_product)
+            continue
+        if len(queue) == 0:
+            product = num
+        else:
+            product *= num
+        great_product = max(product, great_product)
+        queue.append(num)
+    for num in iterator:
+        if num == 0:
+            queue = deque()
+            great_product = max(num, great_product)
+            continue
+        if len(queue) == 0:
+            product = num
+        else:
+            product *= num/queue.popleft()
+        great_product = max(product, great_product)
+        queue.append(num)
+    return great_product
+
+
+def manhattan_distance(x: Sequence, y: Sequence) -> Any:
+    """L1 distance between points in vector space"""
+    assert len(x) == len(y)
+    dim: int = len(x)
+    return sum(abs(x[i]-y[i]) for i in range(dim))
