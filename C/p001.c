@@ -16,7 +16,7 @@ int main() {
     int answer2 = brute_force(n);
 
     if (answer != answer2) {
-        printf("error: %i != %i\n", answer1, answer2);
+        printf("error: %i != %i\n", answer, answer2);
         return 1;
     }
 

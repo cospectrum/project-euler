@@ -15,6 +15,7 @@ natural numbers and the square of the sum.
 def brute_force(n: int) -> int:
     square_of_sum = sum(range(1, n + 1)) ** 2
     sum_of_squares = sum(x ** 2 for x in range(1, n + 1))
+
     return square_of_sum - sum_of_squares
 
 
@@ -35,5 +36,7 @@ def get_sum_of_squares(n: int) -> int:
 if __name__ == '__main__':
     n = 100
     answer = get_difference(n)
+    
     assert answer == brute_force(n)
     print(answer)
+

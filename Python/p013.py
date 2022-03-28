@@ -106,9 +106,11 @@ NUMBERS = '''
 
 def main():
     total_sum = sum(int(num) for num in NUMBERS.split('\n') if num)
+    
     answer = str(total_sum)[:10]
     print(answer)
 
 
 if __name__ == '__main__':
     main()
+

@@ -15,6 +15,7 @@ def find_triplet(n: int) -> tuple:
     => abc = c(N^2 - 2cN)/2
     =>  2(N - b - c)b = N(N - 2c)  &&  a = N - b - c
     """
+
     for c in range(n):
         for b in range(c):
             if 2*b*(n - b - c) == n*(n - 2*c):
@@ -22,6 +23,7 @@ def find_triplet(n: int) -> tuple:
                 if a > b:
                     a, b = b, a
                 return a, b, c
+    
     return tuple()
 
 
@@ -29,5 +31,7 @@ if __name__ == '__main__':
     n = 1000
     a, b, c = find_triplet(n)
     assert a + b + c == n
+
     answer = a * b * c
     print(answer)
+

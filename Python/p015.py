@@ -28,20 +28,25 @@ def make_matrix(shape: int) -> Matrix:
 def get_route_matrix(shape: int) -> Matrix:
     matrix = make_matrix(shape)
     matrix[0] = [1]*len(matrix[0])
+    
     for i in range(1, len(matrix)):
         matrix[i][0] = 1
+    
     for i in range(1, len(matrix)):
         for j in range(1, len(matrix[i])):
             matrix[i][j] = matrix[i-1][j] + matrix[i][j-1]
+    
     return matrix
 
 
 def main():
     shape = 1 + 20
     matrix = get_route_matrix(shape)
+    
     answer = matrix[-1][-1]
     print(answer)
 
 
 if __name__ == '__main__':
     main()
+

@@ -24,6 +24,7 @@ def get_number_of_divisors(n: int) -> int:
 
 def get_triangle_number_by(*, position: int) -> int:
     assert isinstance(position, int) and position > 0
+    
     return (position*(position + 1)) // 2
 
 
@@ -35,11 +36,14 @@ def loop(*, start):
 
 def get_triangle_num_with_divisors(*, over: int):
     assert over > 0
+    
     for position in loop(start=1):
         triangle_num = get_triangle_number_by(position=position)
         divisors = get_number_of_divisors(triangle_num)
+        
         if divisors > over:
             return triangle_num
+    return
 
 
 def main():
@@ -50,3 +54,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

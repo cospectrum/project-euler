@@ -18,11 +18,13 @@ def get_words():
     eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen
     ten, twenty, thirty, forty, fifty, sixty, seventy, eighty, ninety
     '''
+    
     words = [
         line.strip().split(', ')
         for line in words.split('\n')
         if line.strip()
     ]
+    
     dict_ = {
         '1-9': words[0],
         '11-19': words[1],
@@ -33,23 +35,29 @@ def get_words():
 
 def get_numbers_dict() -> dict:
     words = get_words()
+    
     numbers = words['1-9'] + ['ten'] + words['11-19']
     numbers += [
         ' '.join([zero_num, digit]).rstrip()
         for zero_num in words['zeros'][1:]
         for digit in [''] + words['1-9']
     ]
+    
     for num in words['1-9']:
         prefix = f'{num} hundred'
         numbers.append(prefix)
+
         numbers += [f'{prefix} and {word}' for word in words['1-9'] + ['ten']]
         numbers += [f'{prefix} and {word}' for word in words['11-19']]
+        
         for zero_num in words['zeros'][1:]:
             numbers += [
                 f'{prefix} and {zero_num} {digit}'.rstrip()
                 for digit in [''] + words['1-9']
             ]
+
     numbers.append('one thousand')
+    
     numbers_dict = {
         index + 1: number
         for index, number in enumerate(numbers)
@@ -59,6 +67,7 @@ def get_numbers_dict() -> dict:
 
 def get_answer() -> int:
     numbers = get_numbers_dict().values()
+    
     answer = len(''.join(num.replace(' ', '') for num in numbers))
     return answer
 
@@ -70,3 +79,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

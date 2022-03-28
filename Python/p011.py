@@ -32,8 +32,10 @@ from collections import deque
 
 def max_product(iterable_obj, *, adjacency: int):
     assert adjacency > 0
+    
     queue = deque()
     iterator = iter(iterable_obj)
+    
     product = 1
     for _ in range(adjacency):
         num = next(iterator)
@@ -43,6 +45,7 @@ def max_product(iterable_obj, *, adjacency: int):
             break
         product *= num
         queue.append(num)
+    
     great_product = product
     for num in iterator:
         if num == 0:
@@ -52,14 +55,17 @@ def max_product(iterable_obj, *, adjacency: int):
             product = num
         else:
             product *= num/queue.popleft()
+        
         queue.append(num)
         if len(queue) == adjacency:
             great_product = max(product, great_product)
+    
     return great_product
 
 
 def matrix_from_string(matrix: str) -> list:
     matrix_generator = (line.strip() for line in matrix.splitlines())
+    
     matrix = [
         [int(num) for num in row.split()]
         for row in matrix_generator if row
@@ -79,6 +85,7 @@ def get_diagonals(matrix: list) -> list:
     diagonals = []
     matrix_len = len(matrix)
     diagonals_len = 2*matrix_len - 1
+    
     for i in range(diagonals_len):
         if i < matrix_len:
             col_iter = range(matrix_len-i-1, matrix_len)
@@ -86,8 +93,10 @@ def get_diagonals(matrix: list) -> list:
         else:
             col_iter = range(0, diagonals_len-i)
             row_iter = range(i % matrix_len + 1, matrix_len)
+        
         diagonal = [matrix[row][col] for row, col in zip(row_iter, col_iter)]
         diagonals.append(diagonal)
+    
     return diagonals
 
 
@@ -95,6 +104,7 @@ def get_counter_diagonals(matrix: list) -> list:
     diagonals = []
     matrix_len = len(matrix)
     diagonals_len = 2*matrix_len - 1
+    
     for i in range(diagonals_len):
         if i < matrix_len:
             col_iter = range(i, -1, -1)
@@ -102,14 +112,17 @@ def get_counter_diagonals(matrix: list) -> list:
         else:
             col_iter = range(matrix_len-1, -1, -1)
             row_iter = range(i % matrix_len + 1, matrix_len)
+        
         diagonal = [matrix[row][col] for row, col in zip(row_iter, col_iter)]
         diagonals.append(diagonal)
+    
     return diagonals
 
 
 def get_answer(matrix, adjacency: int):
     if isinstance(matrix, str):
         matrix = matrix_from_string(matrix)
+    
     transposed_matrix = transpose_matrix(matrix)
     diagonals = get_diagonals(matrix)
     counter_diagonals = get_counter_diagonals(matrix)
@@ -134,6 +147,7 @@ def get_answer(matrix, adjacency: int):
     greatest_product = max(
         max_column_prod, max_row_prod, max_diag_prod, max_counter_diag_prod
     )
+    
     return greatest_product
 
 
@@ -169,3 +183,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

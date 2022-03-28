@@ -15,6 +15,7 @@ def brute_force(n: int) -> int:
 def sum_3_or_5(n: int) -> int:
     if n <= 3:
         return 0
+
     count_3 = (n - 1) // 3
     count_5 = (n - 1) // 5
     count_15 = (n - 1) // 15
@@ -30,6 +31,7 @@ def sum_3_or_5(n: int) -> int:
 if __name__ == '__main__':
     n = 1000
     answer = sum_3_or_5(n)
+
     assert answer == brute_force(n)
     print(answer)
 

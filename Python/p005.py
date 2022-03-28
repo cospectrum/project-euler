@@ -9,13 +9,16 @@ from utils import get_factorization_dict
 
 def get_product(dictionary) -> int:
     product = 1
+
     for key in dictionary:
         product *= key ** dictionary[key]
+
     return product
 
 
 def max_union(dict_1, dict_2):
     keys = set(dict_1) | set(dict_2)
+    
     result = {
         key: max(dict_1.get(key, 0), dict_2.get(key, 0))
         for key in keys
@@ -33,6 +36,7 @@ def main():
     
     answer = get_product(union)
     print(answer)
+    return
 
 
 if __name__ == '__main__':

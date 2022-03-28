@@ -21,6 +21,7 @@ def fib_numbers_iterator():
 
 def get_slice_by(*, bound: int, iterator):
     number = next(iterator)
+    
     while number <= bound:
         yield number
         number = next(iterator)
@@ -28,6 +29,7 @@ def get_slice_by(*, bound: int, iterator):
 
 def sum_even_fib_numbers(bound: int):
     iterator = fib_numbers_iterator()
+
     result = sum(
         num for num in get_slice_by(bound=bound, iterator=iterator)
         if num % 2 == 0

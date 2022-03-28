@@ -19,6 +19,7 @@ from typing import Iterator
 def sequence_generator(start: int) -> Iterator[int]:
     n = start
     yield n
+    
     while n != 1:
         if n % 2 == 0:
             n = n//2
@@ -38,9 +39,11 @@ def get_max_start(end: int) -> int:
 
 def main():
     end = 10**6
+    
     answer = get_max_start(end=end)
     print(answer)
 
 
 if __name__ == '__main__':
     main()
+
