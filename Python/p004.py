@@ -18,3 +18,4 @@ def brute_force():
 if __name__ == '__main__':
     answer = brute_force()
     print(answer)
+

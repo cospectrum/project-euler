@@ -9,8 +9,10 @@ What is the 10 001st prime number?
 # Brute force. For more performance see "Sieve of Eratosthenes" and problem №10
 def get_prime_number_by(*, position: int) -> int:
     assert isinstance(position, int) and position > 0
+
     previous_primes = [2]
     new_prime = previous_primes[-1]
+    
     while len(previous_primes) != position:
         new_prime += 1
         for prev_prime in previous_primes:
@@ -18,6 +20,7 @@ def get_prime_number_by(*, position: int) -> int:
                 break
         else:
             previous_primes.append(new_prime)
+    
     return previous_primes[-1]
 
 
@@ -25,3 +28,4 @@ if __name__ == '__main__':
     n = 10**4 + 1
     answer = get_prime_number_by(position=n)
     print(answer)
+

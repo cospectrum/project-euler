@@ -14,7 +14,7 @@ def get_product(dictionary) -> int:
     return product
 
 
-def get_max_union(dict_1, dict_2):
+def max_union(dict_1, dict_2):
     keys = set(dict_1) | set(dict_2)
     result = {
         key: max(dict_1.get(key, 0), dict_2.get(key, 0))
@@ -25,14 +25,16 @@ def get_max_union(dict_1, dict_2):
 
 def main():
     n = 20
-    iterator = range(1, n + 1)
-    factor_union = dict()
-    for number in iterator:
-        factor = get_factorization_dict(number)
-        factor_union = get_max_union(factor_union, factor)
-    answer = get_product(factor_union)
+    union = dict()
+
+    for number in range(1, n + 1):
+        factors = get_factorization_dict(number)
+        union = max_union(union, factors)
+    
+    answer = get_product(union)
     print(answer)
 
 
 if __name__ == '__main__':
     main()
+

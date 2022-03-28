@@ -14,11 +14,14 @@ def get_factor(num: int) -> int:
         return num
     if num % 2 == 0:
         return get_factor(num // 2)
+
     factor = int(sqrt(num))
     while num % factor:
         factor -= 1
-        if factor == 1:
-            return num
+        
+    if factor == 1:
+        return num
+    
     return max(get_factor(num // factor), get_factor(factor))
 
 
@@ -26,3 +29,4 @@ if __name__ == '__main__':
     n = 600851475143
     answer = get_factor(n)
     print(answer)
+

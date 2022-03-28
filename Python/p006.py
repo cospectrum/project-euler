@@ -13,8 +13,8 @@ natural numbers and the square of the sum.
 
 # For tests
 def brute_force(n: int) -> int:
-    sum_of_squares = sum(x ** 2 for x in range(1, n + 1))
     square_of_sum = sum(range(1, n + 1)) ** 2
+    sum_of_squares = sum(x ** 2 for x in range(1, n + 1))
     return square_of_sum - sum_of_squares
 
 

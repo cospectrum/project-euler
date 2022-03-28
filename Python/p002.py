@@ -10,9 +10,11 @@ million, find the sum of the even-valued terms.
 def fib_numbers_iterator():
     first = 0
     second = 1
+    
     while True:
         fib_number = first + second
         yield fib_number
+
         first = second
         second = fib_number
 
@@ -37,3 +39,4 @@ if __name__ == '__main__':
     n = 4 * 10**6
     answer = sum_even_fib_numbers(n)
     print(answer)
+

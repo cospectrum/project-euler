@@ -5,6 +5,7 @@ from typing import Any, Sequence, List, Iterator, Union
 
 
 def benchmark(func):
+    
     def wrapper(*args, **kwargs):
         start = time.time()
         result = func(*args, **kwargs)
@@ -28,6 +29,7 @@ def factors_generator(number: int) -> Iterator[int]:
             yield m
             yield number // m
         m += 1
+    
     if m*m == number:
         yield m
 
@@ -35,20 +37,22 @@ def factors_generator(number: int) -> Iterator[int]:
 def is_palindrome(seq: Union[Sequence, int]) -> bool:
     if isinstance(seq, int):
         seq = str(seq)
+    
     length = len(seq)
     half_len = length//2
+    
     for i in range(half_len):
         if seq[i] != seq[length-1-i]:
-            break
-    else:
-        return True
-    return False
+            return False
+    
+    return True
 
 
 def get_factorization_list(n: int) -> list:
     seq = []
     if not isinstance(n, int) or n < 1:
         return seq
+    
     while True:
         end = ceil(sqrt(n)) + 1
         for i in range(2, end + 1):
@@ -67,9 +71,11 @@ def get_factorization_dict(n: int) -> dict:
     """{primes: powers}
     get_factorization_dict(12) = {2: 2, 3: 1}, since 12 = 2^2 * 3^1
     """
+    
     dictionary = dict()
     if not isinstance(n, int) or n < 1:
         return dictionary
+    
     while True:
         end = ceil(sqrt(n)) + 1
         for i in range(2, end + 1):
@@ -95,38 +101,51 @@ def max_product(iterable_obj, *, queue_len: int) -> Any:
     """Return greatest product of <queue_len> or less
     adjacent values in <iterable_obj>
     """
+    
     assert queue_len > 0
+    
     iterator = iter(iterable_obj)
     queue = deque()
     great_product = product = next(iterator)
+    
     for _ in range(queue_len-1):
         num = next(iterator)
         if num == 0:
             queue = deque()
             great_product = max(num, great_product)
             continue
+        
         if len(queue) == 0:
             product = num
         else:
             product *= num
+        
         great_product = max(product, great_product)
         queue.append(num)
+    
     for num in iterator:
         if num == 0:
             queue = deque()
             great_product = max(num, great_product)
             continue
+    
         if len(queue) == 0:
             product = num
         else:
             product *= num/queue.popleft()
+        
         great_product = max(product, great_product)
         queue.append(num)
+    
     return great_product
 
 
 def manhattan_distance(x: Sequence, y: Sequence) -> Any:
     """L1 distance between points in vector space"""
+    
     assert len(x) == len(y)
+    
     dim: int = len(x)
     return sum(abs(x[i]-y[i]) for i in range(dim))
+
+

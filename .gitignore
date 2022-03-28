@@ -10,4 +10,4 @@ stuff
 Python/__pycache__
 Python/tests.py
 
-C
+*.plist

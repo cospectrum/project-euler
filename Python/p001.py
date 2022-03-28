@@ -32,3 +32,4 @@ if __name__ == '__main__':
     answer = sum_3_or_5(n)
     assert answer == brute_force(n)
     print(answer)
+
