@@ -24,14 +24,16 @@ struct array int_to_digits(int n);
 int is_palindrome(int n);
 int brute_force(void);
 
-int main() {
+int main()
+{
     int answer = brute_force();
 
     printf("%i", answer);
     return 0;
 }
 
-int is_palindrome(int n) {
+int is_palindrome(int n)
+{
     struct array arr = int_to_digits(n);
 
     char* digits = arr.elements;
@@ -50,7 +52,8 @@ int is_palindrome(int n) {
     return 1;
 }
 
-int brute_force() {
+int brute_force()
+{
     int max = 0;
 
     for (int x = 100; x < 1000; ++x) {
@@ -65,7 +68,8 @@ int brute_force() {
     return max;
 }
 
-struct array int_to_digits(int n) {
+struct array int_to_digits(int n)
+{
     size_t len = number_of_digits(n);
     char* digits = malloc(len * sizeof(char));
 
@@ -82,7 +86,8 @@ struct array int_to_digits(int n) {
     return arr;
 }
 
-size_t number_of_digits(int n) {
+size_t number_of_digits(int n)
+{
     int exp = 8 * sizeof(n) - 1;
     ui64 MAX_INT = power(2, exp) - 1;
 
@@ -96,7 +101,8 @@ size_t number_of_digits(int n) {
     return num;
 }
 
-ui64 power(int base, int exp) {
+ui64 power(int base, int exp)
+{
     ui64 result = 1;
 
     for (int i = 0; i < exp; ++i)
@@ -105,6 +111,7 @@ ui64 power(int base, int exp) {
     return result;
 }
 
-void free_array(struct array* arr) {
+void free_array(struct array* arr)
+{
     free(arr->elements);
 }

@@ -13,7 +13,8 @@ int power(int base, int exp);
 void max_union(int* max_elements, int* elements, size_t len);
 int get_smallest(int n);
 
-int main() {
+int main()
+{
     int n = 20;
     int answer = get_smallest(n);
 
@@ -21,7 +22,8 @@ int main() {
     return 0;
 }
 
-int get_smallest(int n) {
+int get_smallest(int n)
+{
     size_t len = n + 1;
     int* array = calloc(2 * len, sizeof(int));
 
@@ -42,7 +44,8 @@ int get_smallest(int n) {
     return product;
 }
 
-void get_factorization(int* array, size_t len, const int n) {
+void get_factorization(int* array, size_t len, const int n)
+{
     // index = base, value = exp
     // 12 = 2^2 * 3^1 -> int *array = {0, 0, 2, 1, 0, 0, ..., 0}
 
@@ -59,22 +62,24 @@ void get_factorization(int* array, size_t len, const int n) {
     }
 }
 
-int power(int base, int exp) {
+int power(int base, int exp)
+{
     int result = 1;
-
     for (int i = 0; i < exp; ++i)
         result *= base;
 
     return result;
 }
 
-int max(int a, int b) {
+int max(int a, int b)
+{
     if (a > b)
         return a;
     return b;
 }
 
-void max_union(int* max_elements, int* elements, size_t len) {
+void max_union(int* max_elements, int* elements, size_t len)
+{
     for (size_t i = 0; i < len; ++i)
         max_elements[i] = max(max_elements[i], elements[i]);
 }

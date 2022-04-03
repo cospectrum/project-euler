@@ -17,7 +17,8 @@ int sum_of_squares(int n);
 int get_diff(int n);
 int brute_force(int n); // for tests
 
-int main() {
+int main()
+{
     int n = 100;
     int answer = get_diff(n);
     int answer2 = brute_force(n);
@@ -31,21 +32,25 @@ int main() {
     return 0;
 }
 
-int get_diff(int n) {
+int get_diff(int n)
+{
     return square_of_sum(n) - sum_of_squares(n);
 }
 
-int square_of_sum(int n) {
+int square_of_sum(int n)
+{
     int sum = n * (n + 1) / 2;
     return sum * sum;
 }
 
-int sum_of_squares(int n) {
+int sum_of_squares(int n)
+{
     int prod = n * (n + 1) * (2 * n + 1);
     return prod / 6;
 }
 
-int brute_force(int n) {
+int brute_force(int n)
+{
     int sum = 0;
     int squares = 0;
 

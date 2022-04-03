@@ -17,10 +17,11 @@ void push(struct vector* v, int element);
 int pop(struct vector* v);
 int get_prime_number(int position);
 
-int main() {
+int main()
+{
     int n = 10001;
     int answer = get_prime_number(n);
-    
+
     if (answer == -1)
         return -1;
 
@@ -28,7 +29,8 @@ int main() {
     return 0;
 }
 
-int get_prime_number(int position) {
+int get_prime_number(int position)
+{
     int bound = 2 + position / 2;
     int* buffer = malloc(bound * sizeof(int));
     if (buffer == NULL) {
@@ -59,12 +61,14 @@ int get_prime_number(int position) {
     return pop(&primes);
 }
 
-void push(struct vector* v, int element) {
+void push(struct vector* v, int element)
+{
     v->elements[v->len] = element;
     v->len += 1;
 }
 
-int pop(struct vector* v) {
+int pop(struct vector* v)
+{
     v->len -= 1;
     return v->elements[v->len];
 }

@@ -43,7 +43,8 @@ int char_to_int(const char ch);
 i64 max(i64 a, i64 b);
 i64 find_max_product(const char* number, size_t len, int adj);
 
-int main() {
+int main()
+{
     const char* number = ("73167176531330624919225119674426574742355349194934"
                           "96983520312774506326239578318016984801869478851843"
                           "85861560789112949495459501737958331952853208805511"
@@ -68,7 +69,7 @@ int main() {
     size_t len = 1000;
     int adj = 13;
     i64 answer = find_max_product(number, len, adj);
-    
+
     if (answer == -1)
         return -1;
 
@@ -76,7 +77,8 @@ int main() {
     return 0;
 }
 
-i64 find_max_product(const char* number, size_t len, int adj) {
+i64 find_max_product(const char* number, size_t len, int adj)
+{
     i64 max_product = 0;
     i64 product = 1;
 
@@ -110,18 +112,21 @@ i64 find_max_product(const char* number, size_t len, int adj) {
     return max_product;
 }
 
-void set_ones(struct queue* q) {
+void set_ones(struct queue* q)
+{
     size_t len = q->len;
 
     for (size_t i = 0; i < len; ++i)
         q->values[i] = 1;
 }
 
-i64 front(const struct queue* q) {
+i64 front(const struct queue* q)
+{
     return q->values[0];
 }
 
-void push(struct queue* q, i64 value) {
+void push(struct queue* q, i64 value)
+{
     size_t len = q->len - 1;
 
     for (size_t i = 0; i < len; ++i)
@@ -130,13 +135,14 @@ void push(struct queue* q, i64 value) {
     q->values[len] = value;
 }
 
-int char_to_int(const char ch) {
+int char_to_int(const char ch)
+{
     return (int)ch - (int)'0';
 }
 
-i64 max(i64 a, i64 b) {
+i64 max(i64 a, i64 b)
+{
     if (a > b)
         return a;
     return b;
 }
-

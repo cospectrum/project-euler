@@ -10,7 +10,8 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 int sum_3_or_5(int n);
 int brute_force(int n);
 
-int main() {
+int main()
+{
     int n = 1000;
     int answer = sum_3_or_5(n);
     int answer2 = brute_force(n);
@@ -24,7 +25,8 @@ int main() {
     return 0;
 }
 
-int sum_3_or_5(int n) {
+int sum_3_or_5(int n)
+{
     if (n < 4)
         return n;
 
@@ -40,7 +42,8 @@ int sum_3_or_5(int n) {
     return sum;
 }
 
-int brute_force(int n) {
+int brute_force(int n)
+{
     int sum = 0;
 
     for (int i = 0; i < n; ++i) {

@@ -10,7 +10,8 @@ values do not exceed four million, find the sum of the even-valued terms.
 int fib_numbers_iterator(void);
 int sum_even_fib_numbers(int bound);
 
-int main() {
+int main()
+{
     int n = 4 * 1000000;
     int answer = sum_even_fib_numbers(n);
 
@@ -18,7 +19,8 @@ int main() {
     return 0;
 }
 
-int sum_even_fib_numbers(int bound) {
+int sum_even_fib_numbers(int bound)
+{
     int sum = 0;
 
     int fib_number = fib_numbers_iterator();
@@ -33,7 +35,8 @@ int sum_even_fib_numbers(int bound) {
     return sum;
 }
 
-int fib_numbers_iterator() {
+int fib_numbers_iterator()
+{
     static int first = 0;
     static int second = 1;
 

@@ -12,7 +12,8 @@ i64 max(i64, i64);
 i64 isqrt(i64 n);
 i64 get_prime_factor(i64 n);
 
-int main() {
+int main()
+{
     i64 n = 600851475143;
     i64 answer = get_prime_factor(n);
 
@@ -20,7 +21,8 @@ int main() {
     return 0;
 }
 
-i64 get_prime_factor(i64 n) {
+i64 get_prime_factor(i64 n)
+{
     if ((n == 1) || (n == 2) || (n == 3))
         return n;
     if (n % 2 == 0)
@@ -36,14 +38,16 @@ i64 get_prime_factor(i64 n) {
     return max(get_prime_factor(n / factor), get_prime_factor(factor));
 }
 
-i64 isqrt(i64 n) {
+i64 isqrt(i64 n)
+{
     i64 i = 0;
     while (i * i <= n)
         ++i;
     return i - 1;
 }
 
-i64 max(i64 a, i64 b) {
+i64 max(i64 a, i64 b)
+{
     if (a > b)
         return a;
     return b;

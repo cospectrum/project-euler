@@ -10,7 +10,10 @@ stuff
 Python/__pycache__
 Python/p018.py
 
-
-Rust
-
+C/p011.c
 *.plist
+
+Rust/*
+!Rust/*.rs
+Rust/p005.rs
+
