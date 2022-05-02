@@ -10,7 +10,7 @@ fn main() {
     let n = 4_000_000;
     let answer = sum_even_fib_numbers(n);
 
-    print!("{answer}");
+    println!("{answer}");
 }
 
 fn sum_even_fib_numbers(bound: u32) -> u32 {

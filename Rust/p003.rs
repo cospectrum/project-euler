@@ -8,7 +8,7 @@ fn main() {
     let n = 600851475143;
     let answer = prime_factor(n);
 
-    print!("{answer}");
+    println!("{answer}");
 }
 
 fn prime_factor(n: u64) -> u64 {

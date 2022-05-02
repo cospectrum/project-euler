@@ -76,7 +76,7 @@ def matrix_from_string(matrix: str) -> list:
 def transpose_matrix(matrix: list) -> list:
     transposed_matrx = [
         [row[i] for row in matrix]
-        for i in range(len(matrix))
+        for i in range(len(matrix[0]))
     ]
     return transposed_matrx
 

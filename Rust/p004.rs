@@ -7,7 +7,7 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 
 fn main() {
     let answer = brute_force();
-    print!("{answer}");
+    println!("{answer}");
 }
 
 fn brute_force() -> u32 {

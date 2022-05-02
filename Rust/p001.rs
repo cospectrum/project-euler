@@ -10,7 +10,7 @@ fn main() {
     let answer = sum_3_or_5(n);
 
     assert_eq!(answer, brute_force(n));
-    print!("{answer}");
+    println!("{answer}");
 }
 
 fn brute_force(n: u32) -> u32 {
