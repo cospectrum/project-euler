@@ -38,11 +38,13 @@ def find_max_product(*, number, digits: int):
         str(number).strip().split('0')
     )
     max_product = 0
+ 
     for num in numbers:
         for i in range(len(num) - digits + 1):
             sliced_num = map(int, num[i:i+digits])
             product = get_product(sliced_num)
             max_product = max(product, max_product)
+    
     return max_product
 
 

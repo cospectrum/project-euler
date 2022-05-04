@@ -15,7 +15,7 @@ def eratosthenes_sieve(n: int) -> tuple:
         is_prime = sieve[num]
         if not is_prime:
             continue
-        
+ 
         for next_num in range(num*num, len(sieve), num):
             sieve[next_num] = False
     

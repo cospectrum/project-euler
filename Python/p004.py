@@ -9,9 +9,7 @@ from utils import is_palindrome
 
 
 def brute_force():
-    iterator = (
-        x * y for y in range(100, 999+1) for x in range(100, 999+1)
-    )
+    iterator = (x * y for y in range(100, 999+1) for x in range(100, 999+1))
     return max(n for n in iterator if is_palindrome(n))
 
 

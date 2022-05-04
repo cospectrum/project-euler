@@ -16,10 +16,10 @@ NOTE: Once the chain starts the terms are allowed to go above one million.
 from typing import Iterator
 
 
-def sequence_generator(start: int) -> Iterator[int]:
+def collatz(start: int) -> Iterator[int]:
     n = start
     yield n
-    
+
     while n != 1:
         if n % 2 == 0:
             n = n//2
@@ -29,12 +29,12 @@ def sequence_generator(start: int) -> Iterator[int]:
             yield n
 
 
-def get_chain_len(start_number: int) -> int:
-    return sum(1 for num in sequence_generator(start_number))
+def chain_len(start_number: int) -> int:
+    return sum(1 for num in collatz(start_number))
 
 
 def get_max_start(end: int) -> int:
-    return max(range(1, end), key=lambda start: get_chain_len(start))
+    return max(range(1, end), key=lambda start: chain_len(start))
 
 
 def main():

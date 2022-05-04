@@ -72,80 +72,27 @@ def get_factorization_dict(n: int) -> dict:
     get_factorization_dict(12) = {2: 2, 3: 1}, since 12 = 2^2 * 3^1
     """
     
-    dictionary = dict()
+    d = dict()
     if not isinstance(n, int) or n < 1:
-        return dictionary
+        return d
     
     while True:
         end = ceil(sqrt(n)) + 1
         for i in range(2, end + 1):
             if n % i == 0:
                 n //= i
-                dictionary.setdefault(i, 0)
-                dictionary[i] += 1
+                d.setdefault(i, 0)
+                d[i] += 1
                 break
             if i == end:
-                dictionary.setdefault(n, 0)
-                dictionary[n] += 1
-                return dictionary
+                d.setdefault(n, 0)
+                d[n] += 1
+                return d
         if n == 1:
-            return dictionary
+            return d
 
 
 def binomial_coefficient(n: int, k: int) -> int:
     assert n >= 0 and n >= k
     return factorial(n) // (factorial(n - k) * factorial(k))
-
-
-def max_product(iterable_obj, *, queue_len: int) -> Any:
-    """Return greatest product of <queue_len> or less
-    adjacent values in <iterable_obj>
-    """
-    
-    assert queue_len > 0
-    
-    iterator = iter(iterable_obj)
-    queue = deque()
-    great_product = product = next(iterator)
-    
-    for _ in range(queue_len-1):
-        num = next(iterator)
-        if num == 0:
-            queue = deque()
-            great_product = max(num, great_product)
-            continue
-        
-        if len(queue) == 0:
-            product = num
-        else:
-            product *= num
-        
-        great_product = max(product, great_product)
-        queue.append(num)
-    
-    for num in iterator:
-        if num == 0:
-            queue = deque()
-            great_product = max(num, great_product)
-            continue
-    
-        if len(queue) == 0:
-            product = num
-        else:
-            product *= num/queue.popleft()
-        
-        great_product = max(product, great_product)
-        queue.append(num)
-    
-    return great_product
-
-
-def manhattan_distance(x: Sequence, y: Sequence) -> Any:
-    """L1 distance between points in vector space"""
-    
-    assert len(x) == len(y)
-    
-    dim: int = len(x)
-    return sum(abs(x[i]-y[i]) for i in range(dim))
-
 

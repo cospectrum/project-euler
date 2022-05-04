@@ -39,6 +39,6 @@ fn brute_force(n: u64) -> u64 {
     let sum: u64 = (1..=n).sum();
     let sq_of_sum = sum * sum;
 
-    let sum_of_sq: u64 = (1..=n).map(|x| x * x).sum();
-    sq_of_sum - sum_of_sq
+    let sum_of_sqrs: u64 = (1..=n).map(|x| x * x).sum();
+    sq_of_sum - sum_of_sqrs
 }

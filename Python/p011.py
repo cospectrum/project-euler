@@ -30,37 +30,37 @@ What is the greatest product of four adjacent numbers in the same direction
 from collections import deque
 
 
-def max_product(iterable_obj, *, adjacency: int):
-    assert adjacency > 0
+def max_product(iterable_obj, *, adj: int):
+    assert adj > 0
     
     queue = deque()
     iterator = iter(iterable_obj)
-    
-    product = 1
-    for _ in range(adjacency):
-        num = next(iterator)
-        if num == 0:
-            product = 0
+
+    prod = 1
+    for _ in range(adj):
+        n = next(iterator)
+        if n == 0:
+            prod = 0
             queue = deque()
             break
-        product *= num
-        queue.append(num)
-    
-    great_product = product
-    for num in iterator:
-        if num == 0:
+        prod *= n
+        queue.append(n)
+
+    max_prod = prod
+    for n in iterator:
+        if n == 0:
             queue = deque()
             continue
         if len(queue) == 0:
-            product = num
+            prod = n
         else:
-            product *= num/queue.popleft()
-        
-        queue.append(num)
-        if len(queue) == adjacency:
-            great_product = max(product, great_product)
+            prod *= n/queue.popleft()
+
+        queue.append(n)
+        if len(queue) == adj:
+            max_prod = max(prod, max_prod)
     
-    return great_product
+    return max_prod
 
 
 def matrix_from_string(matrix: str) -> list:
@@ -73,7 +73,7 @@ def matrix_from_string(matrix: str) -> list:
     return matrix
 
 
-def transpose_matrix(matrix: list) -> list:
+def transposed(matrix: list) -> list:
     transposed_matrx = [
         [row[i] for row in matrix]
         for i in range(len(matrix[0]))
@@ -122,32 +122,22 @@ def get_counter_diagonals(matrix: list) -> list:
 def get_answer(matrix, adjacency: int):
     if isinstance(matrix, str):
         matrix = matrix_from_string(matrix)
-    
-    transposed_matrix = transpose_matrix(matrix)
-    diagonals = get_diagonals(matrix)
-    counter_diagonals = get_counter_diagonals(matrix)
 
-    max_column_prod = max(
-        max_product(column, adjacency=adjacency)
-        for column in matrix if len(column) >= adjacency
-    )
-    max_row_prod = max(
-        max_product(row, adjacency=adjacency)
-        for row in transposed_matrix if len(row) >= adjacency
-    )
-    max_diag_prod = max(
-        max_product(diag, adjacency=adjacency)
-        for diag in diagonals if len(diag) >= adjacency
-    )
-    max_counter_diag_prod = max(
-        max_product(diag, adjacency=adjacency)
-        for diag in counter_diagonals if len(diag) >= adjacency
-    )
+    def map_max_product(iterable, adj: int):
+        prod =  max(
+            max_product(v, adj=adj)
+            for v in iterable if len(v) >= adj
+        )
+        return prod
+ 
+    axes = [
+        matrix, 
+        transposed(matrix), 
+        get_diagonals(matrix), 
+        get_counter_diagonals(matrix),
+    ]
+    greatest_product = max(map_max_product(axe, adjacency) for axe in axes)
 
-    greatest_product = max(
-        max_column_prod, max_row_prod, max_diag_prod, max_counter_diag_prod
-    )
-    
     return greatest_product
 
 

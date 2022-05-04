@@ -25,23 +25,23 @@ def make_matrix(shape: int) -> Matrix:
     return matrix
 
 
-def get_route_matrix(shape: int) -> Matrix:
-    matrix = make_matrix(shape)
-    matrix[0] = [1]*len(matrix[0])
+def route_matrix(shape: int) -> Matrix:
+    m: Matrix = make_matrix(shape)
+    m[0] = [1]*len(m[0])
+ 
+    for i in range(1, len(m)):
+        m[i][0] = 1
     
-    for i in range(1, len(matrix)):
-        matrix[i][0] = 1
-    
-    for i in range(1, len(matrix)):
-        for j in range(1, len(matrix[i])):
-            matrix[i][j] = matrix[i-1][j] + matrix[i][j-1]
-    
-    return matrix
+    for i in range(1, len(m)):
+        for j in range(1, len(m[i])):
+            m[i][j] = m[i-1][j] + m[i][j-1]
+ 
+    return m
 
 
 def main():
     shape = 1 + 20
-    matrix = get_route_matrix(shape)
+    matrix = route_matrix(shape)
     
     answer = matrix[-1][-1]
     print(answer)

@@ -13,29 +13,29 @@ natural numbers and the square of the sum.
 
 # For tests
 def brute_force(n: int) -> int:
-    square_of_sum = sum(range(1, n + 1)) ** 2
-    sum_of_squares = sum(x ** 2 for x in range(1, n + 1))
+    sq_of_sum = sum(range(1, n + 1)) ** 2
+    sum_of_sqrs = sum(x ** 2 for x in range(1, n + 1))
 
-    return square_of_sum - sum_of_squares
-
-
-def get_difference(n: int) -> int:
-    return get_square_of_sum(n) - get_sum_of_squares(n)
+    return sq_of_sum - sum_of_sqrs
 
 
-def get_square_of_sum(n: int) -> int:
+def get_diff(n: int) -> int:
+    return square_of_sum(n) - sum_of_squares(n)
+
+
+def square_of_sum(n: int) -> int:
     # (1 + 2 + ... + n)^2
     return (n * (n + 1) // 2) ** 2
 
 
-def get_sum_of_squares(n: int) -> int:
+def sum_of_squares(n: int) -> int:
     # 1^2 + 2^2 + ... + n^2
     return n*(n + 1)*(2*n + 1) // 6
 
 
 if __name__ == '__main__':
     n = 100
-    answer = get_difference(n)
+    answer = get_diff(n)
     
     assert answer == brute_force(n)
     print(answer)
